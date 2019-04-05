@@ -1,0 +1,11 @@
+<div class="section">
+  <%= simple_form_for @post do |f| %>
+    <%= f.input :title %>
+
+    <%= f.file_field:avatar %>
+
+    <%= f.input :detail %>
+      
+    <%= f.button :submit %>
+  <% end %>
+</div>

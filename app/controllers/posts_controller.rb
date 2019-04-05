@@ -42,6 +42,10 @@ class PostsController < ApplicationController
     redirect_to post_path
   end
 
+  def map
+    render "map"
+  end
+
   private
 
   def post_params 

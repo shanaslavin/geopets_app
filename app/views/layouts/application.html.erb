@@ -4,6 +4,10 @@
     <title>GeoPets</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script
+  src="https://code.jquery.com/jquery-3.4.0.min.js"
+  integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+  crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -22,6 +26,7 @@
       <a class="brand-logo"><%= link_to "GeoPets", posts_path %></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><%= link_to "New Post", new_post_path %></li>
+        <li><%= link_to "List View", posts_path %></li>
         <li><%= link_to "Map", '/map' %></li>
       </ul>
     </div>

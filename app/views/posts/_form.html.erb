@@ -2,10 +2,39 @@
   <%= simple_form_for @post do |f| %>
     <%= f.input :title %>
 
-    <%= f.file_field:avatar %>
+    <%= f.file_field :avatar %>
 
     <%= f.input :detail %>
-      
-    <%= f.button :submit %>
+    <%= f.input :lng %>
+
+    <%= f.input :lat %>
+
+    <%= f.button :submit,  :id => "submitForm" %>
   <% end %>
 </div>
+
+<script>
+
+$(document).ready(function() {
+  console.log("Locked and Loaded")
+  $('#submitForm').click(function (event) {
+    event.preventDefault(); // Prevent link from following its href
+    $.ajax({
+      url : 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDxEUuE6E8t1bDDtLwRCnFST5juA96nCbU',
+      type : 'POST',
+      success: (data) => {
+        console.log(data.location)
+        document.getElementById("post_lng").value = data.location.lng
+        document.getElementById("post_lat").value = data.location.lat
+        document.getElementById("new_post").submit()
+    },
+      error: () => {
+        alert("Something messed up")
+    }
+  })
+  });
+})
+
+</script>
+
+

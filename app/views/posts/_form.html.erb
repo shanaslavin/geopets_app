@@ -1,10 +1,18 @@
-<div class="section">
+<div class="container">
   <%= simple_form_for @post do |f| %>
-    <%= f.input :title %>
+    <%= f.input :title, :class => "input-field" %>
 
-    <%= f.file_field :avatar %>
+    <div class = "file-field input-field">
+      <div class = "btn">
+        <span>File</span>
+        <%= f.file_field :avatar, :required => true  %>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
 
-    <%= f.input :detail %>
+    <%= f.input :detail, :class => "input-field" %>
     
     <%= f.hidden_field :lng %>
 
@@ -19,6 +27,7 @@
 $(document).ready(function() {
   console.log("Locked and Loaded")
   $('#submitForm').click(function (event) {
+    $('#submitForm').attr('disabled', 'disabled')
     event.preventDefault(); // Prevent link from following its href
     $.ajax({
       url : 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDxEUuE6E8t1bDDtLwRCnFST5juA96nCbU',
@@ -34,6 +43,7 @@ $(document).ready(function() {
     }
   })
   });
+  M.AutoInit()
 })
 
 </script>

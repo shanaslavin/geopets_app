@@ -46,9 +46,14 @@ class PostsController < ApplicationController
     render "map"
   end
 
+  def index_json
+    @posts = Post.all # Get all the model
+    render :json => @posts.to_json # Serialize them as JSON  # Send them out
+  end
+
   private
 
   def post_params 
-    params.require(:post).permit(:title, :detail, :avatar)
+    params.require(:post).permit(:title, :detail, :avatar, :lat, :lng)
   end
 end

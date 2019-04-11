@@ -1,11 +1,23 @@
-<h1> List of Posts </h1>
 
+<div class="container center">
+  <h1> GeoPets </h1>
+  <% @posts.each do |post|%>
+    <div class="row">
+      <div class="col offset-m2 s12 m8">
+        <div class="card">
+          <div class="card-image">
+            <%= image_tag(post.avatar, size: "300x500") %>
+            <span class="card-title"><%= post.title %></span>
+          </div>
+          <div class="card-content">
+            <p><%= post.detail %></p>
+          </div>
+          <div class="card-action">
+            <%= link_to "Come Find Me!", post %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<% @posts.each do |post|%>
-  <h3>
-    <%= link_to post.title, post %>
-  </h3>
-  <p>
-    <%= post.detail %>
-  </p>
-<% end %>

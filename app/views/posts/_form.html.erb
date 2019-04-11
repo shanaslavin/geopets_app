@@ -5,9 +5,10 @@
     <%= f.file_field :avatar %>
 
     <%= f.input :detail %>
-    <%= f.input :lng %>
+    
+    <%= f.hidden_field :lng %>
 
-    <%= f.input :lat %>
+    <%= f.hidden_field :lat %>
 
     <%= f.button :submit,  :id => "submitForm" %>
   <% end %>

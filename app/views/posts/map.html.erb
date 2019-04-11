@@ -17,18 +17,24 @@
 <body>      
     
 <div id="map"></div>
-
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxEUuE6E8t1bDDtLwRCnFST5juA96nCbU&callback=initMap">
+</script>   
 <script>
+    
     var locations = []
-    fetch('api/1')
+    fetch('api')
     .then((resp) => resp.json())
     .then(function(data){
-        /* for (var i = 0; i < data.length; i++) {
-            pet = data[i];
+      posts = data
+        for (var i = 0; i < posts.length; i++) {
+            pet = posts[i];
+            console.log("Pet: ", pet);
             locations.push({
-                lat: parseFloat(pet.fields.lat), 
-                lng: parseFloat(pet.fields.lng),
-                url: '/geopet/post_created/' + pet.pk}); */
+                lat: parseFloat(pet.lat), 
+                lng: parseFloat(pet.lng),
+                url: '/posts/' + pet.id });
         }
     })
     .then(() => {
@@ -62,8 +68,5 @@
     });
     
 </script>    
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxEUuE6E8t1bDDtLwRCnFST5juA96nCbU&callback=initMap">
-    </script>           
+        
 </body>

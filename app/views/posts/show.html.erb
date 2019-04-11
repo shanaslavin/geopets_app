@@ -1,16 +1,55 @@
-<section class="section">
-  <div class="section">
-    <h1 class ="title"><%= @post.title %></h1>
-    <%= image_tag(@post.avatar, size: "500x500") %>
-    <div class="detail">
-      <%= @post.detail %>
+<body>
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 500px;  /* The height is 400 pixels */
+            width: 100%;  /* The width is the width of the web page */
+            margin-top: 10px;
+            }
+        </style>
+
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag(@post.avatar, size: "300x500") %>
+        <span class="card-title"><%= @post.title %></span>
+      </div>
+      <div class="card-content">
+        <p><%= @post.detail %></p>
+
+        <%= link_to "Edit", edit_post_path(@post), :class => "card-action" %>
+
+        <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to delete?" }, 
+          :class => "card-action" %>
+      </div>
+    </div>
+</div>
+  <div class = "col s12 m6">
+    <div>
+      <div id="map"></div>
     </div>
   </div>
-  <div align="right">
-    <%= link_to "Edit", edit_post_path(@post), class: "button" %>
-  </div>
-  <div align="right">
-    <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "button" %>
-  </div>
+</div>
 
-</section>
+
+<script>
+
+      function initMap() {
+        // The location of Uluru
+        var uluru = {lat: <%= @post.lat %>, lng: <%= @post.lng %> };
+        console.log(uluru)
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 17, center: uluru});
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({position: uluru, map: map});
+      }
+
+      this.initMap = initMap;
+              
+</script>    
+        
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxEUuE6E8t1bDDtLwRCnFST5juA96nCbU&callback=initMap">
+</script>   
+</body>

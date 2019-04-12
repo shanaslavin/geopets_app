@@ -24,6 +24,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @post.avatar.attach(params[:avatar])
     if @post.update_attributes(post_params)
       redirect_to @post
     else
@@ -47,8 +48,8 @@ class PostsController < ApplicationController
   end
 
   def index_json
-    @posts = Post.all # Get all the model
-    render :json => @posts.to_json # Serialize them as JSON  # Send them out
+    @posts = Post.all 
+    render :json => @posts.to_json 
   end
 
   private

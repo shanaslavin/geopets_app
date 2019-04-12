@@ -8,10 +8,15 @@ gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3', '~> 1.3.6'
 
+gem 'byebug'
+
 # Making app Heroku compatable
 group :development, :test do
   gem 'sqlite3'
 end
+
+# For active storage with AWS
+gem "aws-sdk"
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

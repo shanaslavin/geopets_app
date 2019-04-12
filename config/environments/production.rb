@@ -41,6 +41,8 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options)
   # For active storage with AWS
   config.active_storage.service = :amazon
+
+  config.require_master_key = true
   
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil

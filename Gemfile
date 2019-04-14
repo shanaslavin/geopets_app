@@ -15,6 +15,8 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+gem 'rails_12factor', group: :production
+
 # For active storage with AWS
 gem "aws-sdk-s3", require: false
 
